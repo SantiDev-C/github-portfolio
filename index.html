@@ -3,300 +3,417 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Santiago ERP — Portfolio</title>
+  <title>Santino Chemez — Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Lemonada:wght@400;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet" />
   <style>
+    /* ── TOKENS ─────────────────────────────────────────────────────────── */
     :root {
-      --bg: #0d1117;
-      --surface: #161b22;
-      --border: #30363d;
-      --accent: #58a6ff;
-      --accent2: #3fb950;
-      --text: #e6edf3;
-      --muted: #8b949e;
-      --card: #1c2128;
+      --font-display: "Lemonada", Georgia, serif;
+      --font-body:    "Nunito", system-ui, sans-serif;
+
+      --bg:        #1A1216;
+      --surface-0: #241C1E;
+      --surface-1: #2D2224;
+      --sunken:    #140E11;
+
+      --primary:     #CA6166;
+      --primary-lt:  #E8899E;
+      --primary-dim: #3D2228;
+      --accent:      #D48032;
+
+      --text:        #FAFAFA;
+      --text-sec:    #A1A1AA;
+      --text-link:   #E8899E;
+
+      --border:      #2C2C30;
+      --border-str:  #3F3F46;
+
+      --radius-sm: 6px;
+      --radius-md: 10px;
+      --radius-lg: 16px;
+      --radius-pill: 999px;
+
+      --shadow-sm: 0 1px 2px rgba(0,0,0,.20);
+      --shadow-md: 0 4px 12px rgba(0,0,0,.30);
+
+      --ease: cubic-bezier(.2,0,0,1);
+      --fast: 150ms;
+      --base: 250ms;
     }
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+    /* ── RESET ──────────────────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    img, svg { display: block; max-width: 100%; }
 
     body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-    }
-
-    /* NAV */
-    nav {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background: rgba(13, 17, 23, 0.85);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border);
-      padding: 0 2rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      height: 60px;
-    }
-    nav .logo {
-      font-weight: 700;
-      font-size: 1.1rem;
-      color: var(--accent);
-      text-decoration: none;
-    }
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 2rem;
-    }
-    nav ul a {
-      color: var(--muted);
-      text-decoration: none;
-      font-size: 0.9rem;
-      transition: color 0.2s;
-    }
-    nav ul a:hover { color: var(--text); }
-
-    /* HERO */
-    #hero {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 4rem 2rem;
-      background: radial-gradient(ellipse at 50% 0%, rgba(88,166,255,0.08) 0%, transparent 70%);
-    }
-    .hero-inner { max-width: 700px; }
-    .avatar {
-      width: 120px;
-      height: 120px;
-      border-radius: 50%;
-      border: 3px solid var(--border);
-      margin-bottom: 1.5rem;
-      object-fit: cover;
-      background: var(--surface);
-    }
-    #hero h1 {
-      font-size: clamp(2rem, 5vw, 3.5rem);
-      font-weight: 800;
-      margin-bottom: 0.5rem;
-    }
-    #hero h1 span { color: var(--accent); }
-    .tagline {
-      font-size: 1.1rem;
-      color: var(--muted);
-      margin-bottom: 2rem;
-    }
-    .bio {
+      font-family: var(--font-body);
       font-size: 1rem;
+      line-height: 1.55;
       color: var(--text);
-      margin-bottom: 2rem;
-      opacity: 0.85;
+      background: var(--bg);
+      -webkit-font-smoothing: antialiased;
     }
-    .hero-links {
-      display: flex;
-      gap: 1rem;
-      justify-content: center;
-      flex-wrap: wrap;
+
+    h1,h2,h3,h4 {
+      font-family: var(--font-display);
+      color: var(--primary-lt);
+      line-height: 1.2;
     }
-    .btn {
-      padding: 0.6rem 1.4rem;
-      border-radius: 6px;
-      font-size: 0.9rem;
-      font-weight: 600;
+
+    a {
+      color: var(--text-link);
       text-decoration: none;
-      transition: opacity 0.2s, transform 0.15s;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
+      transition: color var(--fast) var(--ease);
     }
-    .btn:hover { opacity: 0.85; transform: translateY(-1px); }
-    .btn-primary { background: var(--accent); color: #0d1117; }
-    .btn-secondary { background: var(--surface); color: var(--text); border: 1px solid var(--border); }
+    a:hover { color: var(--text); text-decoration: underline; }
 
-    /* SECTIONS */
-    section { padding: 5rem 2rem; max-width: 1100px; margin: 0 auto; }
-    .section-title {
-      font-size: 1.6rem;
+    /* ── ANIMATIONS ─────────────────────────────────────────────────────── */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(10px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .reveal {
+      opacity: 0;
+      animation: fadeInUp var(--base) var(--ease) forwards;
+      animation-delay: var(--d, 0ms);
+    }
+
+    /* ── SCROLLBAR ──────────────────────────────────────────────────────── */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--border-str); border-radius: 3px; }
+
+    /* ── NAV ────────────────────────────────────────────────────────────── */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      height: 60px;
+      padding: 0 2rem;
+      display: flex; align-items: center; justify-content: space-between;
+      background: rgba(26,18,22,.88);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo {
+      font-family: var(--font-display);
+      font-size: 1.05rem;
       font-weight: 700;
-      margin-bottom: 0.4rem;
+      color: var(--primary-lt);
+      text-decoration: none;
     }
-    .section-title span { color: var(--accent); }
-    .section-divider {
-      width: 50px;
-      height: 3px;
-      background: var(--accent);
+    .nav-logo:hover { color: var(--text); text-decoration: none; }
+    .nav-links { list-style: none; display: flex; gap: 2rem; }
+    .nav-links a { color: var(--text-sec); font-size: .88rem; font-weight: 600; }
+    .nav-links a:hover { color: var(--text); text-decoration: none; }
+
+    /* ── LAYOUT ─────────────────────────────────────────────────────────── */
+    .container { max-width: 1060px; margin: 0 auto; padding: 0 1.5rem; }
+    .section { padding: 5rem 0; }
+
+    .section-header { margin-bottom: 2.5rem; }
+    .section-header h2 { font-size: 1.7rem; margin-bottom: .4rem; }
+    .section-header h2 span { color: var(--primary); }
+    .divider {
+      width: 48px; height: 3px;
+      background: var(--primary);
       border-radius: 2px;
-      margin-bottom: 2.5rem;
     }
 
-    /* STATS STRIP */
-    #stats .stats-grid {
+    /* ── BUTTONS ────────────────────────────────────────────────────────── */
+    .btn {
+      display: inline-flex; align-items: center; gap: .5rem;
+      padding: .6rem 1.4rem;
+      border-radius: var(--radius-sm);
+      font-family: var(--font-body);
+      font-size: .9rem; font-weight: 700;
+      text-decoration: none;
+      border: none; cursor: pointer;
+      transition: opacity var(--fast), transform var(--fast);
+    }
+    .btn:hover { opacity: .85; transform: translateY(-2px); text-decoration: none; }
+    .btn-primary  { background: var(--primary); color: #fff; }
+    .btn-ghost    { background: transparent; color: var(--text); border: 1.5px solid var(--border-str); }
+
+    /* ── HERO ───────────────────────────────────────────────────────────── */
+    #hero {
+      min-height: calc(100vh - 60px);
+      display: flex; align-items: center;
+      background: radial-gradient(ellipse at 60% 0%, rgba(202,97,102,.10) 0%, transparent 65%);
+    }
+    .hero-inner {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-      gap: 1rem;
+      grid-template-columns: auto 1fr;
+      gap: 3.5rem;
+      align-items: center;
+      padding: 4rem 0;
+    }
+    @media (max-width: 700px) {
+      .hero-inner { grid-template-columns: 1fr; text-align: center; }
+      .hero-portrait { margin: 0 auto; }
+      .hero-cta { justify-content: center; }
+    }
+
+    .hero-portrait { position: relative; flex-shrink: 0; }
+    .avatar {
+      width: 160px; height: 160px;
+      border-radius: 50%;
+      border: 3px solid var(--primary-dim);
+      object-fit: cover;
+      background: var(--surface-0);
+      box-shadow: var(--shadow-md);
+    }
+    .avail-badge {
+      position: absolute; bottom: 6px; left: 50%; transform: translateX(-50%);
+      display: flex; align-items: center; gap: .4rem;
+      background: var(--surface-1);
+      border: 1px solid var(--border-str);
+      border-radius: var(--radius-pill);
+      padding: .25rem .75rem;
+      font-size: .72rem; font-weight: 700; color: var(--text-sec);
+      white-space: nowrap;
+    }
+    .avail-dot {
+      width: 7px; height: 7px; border-radius: 50%;
+      background: #3fb950;
+      box-shadow: 0 0 6px #3fb950;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%,100% { opacity: 1; } 50% { opacity: .4; }
+    }
+
+    .hero-greeting { font-size: .95rem; color: var(--text-sec); margin-bottom: .3rem; }
+    .hero-name {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      color: var(--primary-lt);
+      margin-bottom: .4rem;
+    }
+    .hero-role { font-size: 1.05rem; color: var(--text-sec); margin-bottom: 1rem; font-weight: 600; }
+    .hero-bio  { font-size: .98rem; color: var(--text); opacity: .85; margin-bottom: 1.6rem; max-width: 520px; }
+    .hero-cta  { display: flex; gap: .8rem; flex-wrap: wrap; }
+
+    /* ── STAT GRID ──────────────────────────────────────────────────────── */
+    .stat-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      gap: .8rem;
+      margin-top: 2rem;
     }
     .stat-card {
-      background: var(--card);
+      background: var(--surface-0);
       border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 1.5rem;
+      border-radius: var(--radius-md);
+      padding: 1.2rem 1rem;
       text-align: center;
     }
-    .stat-card .num {
-      font-size: 2rem;
-      font-weight: 800;
-      color: var(--accent);
+    .stat-num {
+      font-family: var(--font-display);
+      font-size: 1.9rem; font-weight: 700;
+      color: var(--primary-lt);
     }
-    .stat-card .label { font-size: 0.8rem; color: var(--muted); margin-top: 0.25rem; }
+    .stat-label { font-size: .75rem; color: var(--text-sec); margin-top: .2rem; }
 
-    /* SKILLS */
-    #skills .skills-grid {
+    /* ── ABOUT TABS ─────────────────────────────────────────────────────── */
+    .tabs-bar {
+      display: flex; gap: .5rem; flex-wrap: wrap;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+    .tab-btn {
+      padding: .5rem 1.1rem;
+      background: transparent;
+      border: none; border-bottom: 2px solid transparent;
+      font-family: var(--font-body); font-size: .88rem; font-weight: 700;
+      color: var(--text-sec); cursor: pointer;
+      margin-bottom: -1px;
+      transition: color var(--fast), border-color var(--fast);
+    }
+    .tab-btn:hover { color: var(--text); }
+    .tab-btn.active { color: var(--primary-lt); border-bottom-color: var(--primary); }
+
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+
+    .about-bio { font-size: 1rem; color: var(--text); opacity: .88; max-width: 680px; margin-bottom: 1.5rem; }
+
+    .tag-list { display: flex; flex-wrap: wrap; gap: .5rem; list-style: none; }
+    .tag-list li {
+      background: var(--primary-dim);
+      border: 1px solid var(--primary);
+      color: var(--primary-lt);
+      border-radius: var(--radius-pill);
+      padding: .25rem .85rem;
+      font-size: .8rem; font-weight: 600;
+    }
+
+    blockquote {
+      border-left: 3px solid var(--primary);
+      padding: 1rem 1.5rem;
+      background: var(--surface-0);
+      border-radius: 0 var(--radius-md) var(--radius-md) 0;
+      font-style: italic;
+      color: var(--text-sec);
+      margin-top: 1.5rem;
+    }
+    blockquote cite { display: block; margin-top: .5rem; font-style: normal; font-weight: 700; color: var(--primary-lt); font-size: .85rem; }
+
+    /* ── SKILLS GRID ────────────────────────────────────────────────────── */
+    .skills-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-      gap: 1rem;
+      grid-template-columns: repeat(auto-fill, minmax(220px,1fr));
+      gap: .85rem;
     }
     .skill-card {
-      background: var(--card);
+      background: var(--surface-0);
       border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 1.2rem 1.4rem;
-      display: flex;
-      align-items: center;
-      gap: 0.8rem;
+      border-radius: var(--radius-md);
+      padding: 1rem 1.2rem;
+      display: flex; align-items: center; gap: .8rem;
+      transition: border-color var(--fast), transform var(--fast);
     }
-    .skill-icon { font-size: 1.5rem; }
-    .skill-name { font-weight: 600; font-size: 0.95rem; }
-    .skill-level { font-size: 0.78rem; color: var(--muted); margin-top: 0.1rem; }
+    .skill-card:hover { border-color: var(--primary); transform: translateY(-2px); }
+    .skill-icon { font-size: 1.4rem; }
+    .skill-name { font-weight: 700; font-size: .92rem; }
+    .skill-sub  { font-size: .75rem; color: var(--text-sec); margin-top: .1rem; }
 
-    /* PROJECTS / REPOS */
-    #projects .filter-bar {
-      display: flex;
-      gap: 0.6rem;
-      margin-bottom: 1.5rem;
-      flex-wrap: wrap;
-    }
-    .filter-btn {
-      padding: 0.35rem 1rem;
-      border-radius: 20px;
+    /* ── EDUCATION ──────────────────────────────────────────────────────── */
+    .edu-list { list-style: none; display: flex; flex-direction: column; gap: 1rem; }
+    .edu-item {
+      display: grid; grid-template-columns: 80px 1fr;
+      gap: 1rem;
+      background: var(--surface-0);
       border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 1.1rem 1.3rem;
+    }
+    .edu-year { font-size: .8rem; color: var(--text-sec); font-weight: 700; padding-top: .15rem; }
+    .edu-degree { font-weight: 700; font-size: .95rem; color: var(--text); }
+    .edu-school { font-size: .82rem; color: var(--text-sec); margin-top: .2rem; }
+    .badge {
+      display: inline-block;
+      margin-top: .4rem;
+      background: var(--primary-dim);
+      border: 1px solid var(--primary);
+      color: var(--primary-lt);
+      border-radius: var(--radius-pill);
+      padding: .15rem .65rem;
+      font-size: .72rem; font-weight: 700;
+    }
+
+    /* ── PROJECTS ───────────────────────────────────────────────────────── */
+    .filter-bar { display: flex; gap: .5rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
+    .filter-btn {
+      padding: .3rem .95rem;
+      border-radius: var(--radius-pill);
+      border: 1px solid var(--border-str);
       background: transparent;
-      color: var(--muted);
-      font-size: 0.82rem;
+      color: var(--text-sec);
+      font-family: var(--font-body); font-size: .8rem; font-weight: 700;
       cursor: pointer;
-      transition: all 0.2s;
+      transition: all var(--fast);
     }
-    .filter-btn.active, .filter-btn:hover {
-      background: var(--accent);
-      color: #0d1117;
-      border-color: var(--accent);
+    .filter-btn:hover, .filter-btn.active {
+      background: var(--primary);
+      color: #fff;
+      border-color: var(--primary);
     }
+
     .repos-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(290px,1fr));
       gap: 1rem;
     }
     .repo-card {
-      background: var(--card);
+      background: var(--surface-0);
       border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 1.4rem;
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
-      transition: border-color 0.2s, transform 0.15s;
+      border-radius: var(--radius-md);
+      padding: 1.3rem;
+      display: flex; flex-direction: column; gap: .5rem;
+      text-decoration: none; color: inherit;
+      transition: border-color var(--fast), transform var(--fast), box-shadow var(--fast);
+    }
+    .repo-card:hover {
+      border-color: var(--primary);
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-md);
       text-decoration: none;
-      color: inherit;
     }
-    .repo-card:hover { border-color: var(--accent); transform: translateY(-2px); }
     .repo-name {
-      font-weight: 700;
-      font-size: 1rem;
-      color: var(--accent);
-      display: flex;
-      align-items: center;
-      gap: 0.4rem;
+      font-weight: 800; font-size: .97rem;
+      color: var(--primary-lt);
+      display: flex; align-items: center; gap: .4rem;
     }
-    .repo-desc { font-size: 0.85rem; color: var(--muted); flex: 1; }
+    .repo-desc { font-size: .83rem; color: var(--text-sec); flex: 1; }
     .repo-meta {
-      display: flex;
-      gap: 1rem;
-      font-size: 0.78rem;
-      color: var(--muted);
-      margin-top: 0.5rem;
+      display: flex; gap: 1rem; flex-wrap: wrap;
+      font-size: .76rem; color: var(--text-sec);
+      margin-top: .4rem;
     }
-    .repo-lang {
-      display: flex;
-      align-items: center;
-      gap: 0.3rem;
-    }
-    .lang-dot {
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-    }
-    .loading {
-      text-align: center;
-      color: var(--muted);
-      padding: 2rem;
-      font-size: 0.9rem;
-    }
+    .repo-lang { display: flex; align-items: center; gap: .3rem; }
+    .lang-dot  { width: 10px; height: 10px; border-radius: 50%; }
+
+    .loading { text-align: center; color: var(--text-sec); padding: 2rem; font-size: .9rem; }
     .error-msg {
-      background: rgba(248,81,73,0.1);
-      border: 1px solid rgba(248,81,73,0.3);
-      border-radius: 8px;
-      padding: 1rem 1.5rem;
-      color: #f85149;
-      font-size: 0.9rem;
+      background: rgba(248,81,73,.1); border: 1px solid rgba(248,81,73,.3);
+      border-radius: var(--radius-md); padding: 1rem 1.5rem;
+      color: #f85149; font-size: .9rem;
     }
 
-    /* CONTACT */
-    #contact .contact-grid {
+    /* ── CONTACT ────────────────────────────────────────────────────────── */
+    .contact-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(200px,1fr));
       gap: 1rem;
     }
     .contact-card {
-      background: var(--card);
+      background: var(--surface-0);
       border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 1.2rem 1.4rem;
-      display: flex;
-      align-items: center;
-      gap: 0.8rem;
-      text-decoration: none;
-      color: inherit;
-      transition: border-color 0.2s, transform 0.15s;
+      border-radius: var(--radius-md);
+      padding: 1.1rem 1.3rem;
+      display: flex; align-items: center; gap: .8rem;
+      text-decoration: none; color: inherit;
+      transition: border-color var(--fast), transform var(--fast);
     }
-    .contact-card:hover { border-color: var(--accent); transform: translateY(-2px); }
+    .contact-card:hover { border-color: var(--primary); transform: translateY(-2px); text-decoration: none; }
     .contact-card .ci { font-size: 1.4rem; }
-    .contact-label { font-size: 0.78rem; color: var(--muted); }
-    .contact-value { font-weight: 600; font-size: 0.9rem; }
+    .contact-label { font-size: .72rem; color: var(--text-sec); }
+    .contact-value { font-weight: 700; font-size: .9rem; color: var(--text); }
 
-    /* FOOTER */
+    .cta-block {
+      margin-top: 3rem;
+      background: var(--surface-0);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      text-align: center;
+    }
+    .cta-block h3 { font-size: 1.3rem; margin-bottom: .5rem; }
+    .cta-block p  { color: var(--text-sec); margin-bottom: 1.5rem; }
+    .cta-actions  { display: flex; gap: .8rem; justify-content: center; flex-wrap: wrap; }
+
+    /* ── FOOTER ─────────────────────────────────────────────────────────── */
     footer {
+      background: var(--sunken);
+      border-top: 1px solid var(--border);
       text-align: center;
       padding: 2rem;
-      border-top: 1px solid var(--border);
-      font-size: 0.8rem;
-      color: var(--muted);
+      font-size: .8rem;
+      color: var(--text-sec);
     }
-    footer a { color: var(--accent); text-decoration: none; }
-
-    /* SCROLLBAR */
-    ::-webkit-scrollbar { width: 6px; }
-    ::-webkit-scrollbar-track { background: var(--bg); }
-    ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+    footer a { color: var(--primary-lt); }
+    footer a:hover { color: var(--text); }
   </style>
 </head>
 <body>
 
+<!-- NAV -->
 <nav>
-  <a class="logo" href="#hero">santiERP</a>
-  <ul>
-    <li><a href="#skills">Skills</a></li>
+  <a class="nav-logo" href="#hero">Santino Chemez</a>
+  <ul class="nav-links">
+    <li><a href="#about">Sobre mí</a></li>
     <li><a href="#projects">Proyectos</a></li>
     <li><a href="#contact">Contacto</a></li>
   </ul>
@@ -304,186 +421,251 @@
 
 <!-- HERO -->
 <section id="hero">
-  <div class="hero-inner">
-    <img id="gh-avatar" class="avatar" src="" alt="avatar" />
-    <h1>Hola, soy <span id="gh-name">Santiago</span></h1>
-    <p class="tagline" id="gh-bio">Game Developer · Unity · C#</p>
-    <p class="bio">
-      Desarrollador apasionado por los videojuegos y la tecnología.
-      Actualmente trabajando en <strong>CivilDeck</strong>, un juego de estrategia tipo deck-builder
-      ambientado en civilizaciones medievales.
-    </p>
-    <div class="hero-links">
-      <a class="btn btn-primary" id="gh-link" href="https://github.com/santiERP" target="_blank">
-        <!-- github icon -->
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
-        Ver GitHub
-      </a>
-      <a class="btn btn-secondary" href="#projects">Ver Proyectos</a>
+  <div class="container">
+    <div class="hero-inner">
+      <div class="hero-portrait reveal" style="--d:0ms">
+        <img id="gh-avatar" class="avatar" src="" alt="Santino Chemez" />
+        <span class="avail-badge">
+          <span class="avail-dot"></span>
+          Disponible
+        </span>
+      </div>
+      <div class="reveal" style="--d:80ms">
+        <p class="hero-greeting">Hola, soy</p>
+        <h1 class="hero-name" id="gh-name">Santino Chemez</h1>
+        <p class="hero-role">Game Developer · Unity · C#</p>
+        <p class="hero-bio">
+          Desarrollador apasionado por los videojuegos y la tecnología.
+          Actualmente construyendo <strong>CivilDeck</strong>, un juego de estrategia tipo deck-builder
+          ambientado en civilizaciones medievales.
+        </p>
+        <div class="hero-cta">
+          <a class="btn btn-primary" id="gh-link" href="https://github.com/SantiERP" target="_blank" rel="noopener">
+            <svg width="15" height="15" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+            Ver GitHub
+          </a>
+          <a class="btn btn-ghost" href="#projects">Ver Proyectos</a>
+        </div>
+
+        <div class="stat-grid">
+          <div class="stat-card">
+            <div class="stat-num" id="stat-repos">—</div>
+            <div class="stat-label">Repositorios</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-num" id="stat-stars">—</div>
+            <div class="stat-label">Stars totales</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-num" id="stat-followers">—</div>
+            <div class="stat-label">Seguidores</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-num">2+</div>
+            <div class="stat-label">Años de experiencia</div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- STATS -->
-<section id="stats" style="padding-top:0;">
-  <div class="stats-grid" id="stats-grid">
-    <div class="stat-card"><div class="num" id="stat-repos">—</div><div class="label">Repositorios</div></div>
-    <div class="stat-card"><div class="num" id="stat-stars">—</div><div class="label">Stars totales</div></div>
-    <div class="stat-card"><div class="num" id="stat-followers">—</div><div class="label">Seguidores</div></div>
-    <div class="stat-card"><div class="num" id="stat-following">—</div><div class="label">Siguiendo</div></div>
-  </div>
-</section>
+<!-- ABOUT -->
+<section id="about" class="section">
+  <div class="container">
+    <div class="section-header reveal">
+      <h2>Sobre <span>mí</span></h2>
+      <div class="divider"></div>
+    </div>
 
-<!-- SKILLS -->
-<section id="skills">
-  <h2 class="section-title">Mis <span>Skills</span></h2>
-  <div class="section-divider"></div>
-  <div class="skills-grid">
-    <div class="skill-card"><span class="skill-icon">🎮</span><div><div class="skill-name">Unity</div><div class="skill-level">Motor principal de desarrollo</div></div></div>
-    <div class="skill-card"><span class="skill-icon">💻</span><div><div class="skill-name">C#</div><div class="skill-level">Scripting y lógica de juego</div></div></div>
-    <div class="skill-card"><span class="skill-icon">🃏</span><div><div class="skill-name">Game Design</div><div class="skill-level">Mecánicas, balanceo y UX</div></div></div>
-    <div class="skill-card"><span class="skill-icon">🎨</span><div><div class="skill-name">Arte 2D / UI</div><div class="skill-level">Diseño de interfaz y assets</div></div></div>
-    <div class="skill-card"><span class="skill-icon">🔧</span><div><div class="skill-name">Git / GitHub</div><div class="skill-level">Control de versiones</div></div></div>
-    <div class="skill-card"><span class="skill-icon">🌐</span><div><div class="skill-name">HTML / CSS / JS</div><div class="skill-level">Web frontend</div></div></div>
+    <div class="tabs-bar reveal" style="--d:60ms" id="tabs-bar">
+      <button class="tab-btn active" data-tab="overview">General</button>
+      <button class="tab-btn" data-tab="skills">Skills</button>
+      <button class="tab-btn" data-tab="education">Formación</button>
+    </div>
+
+    <!-- General -->
+    <div class="tab-panel active reveal" id="tab-overview" style="--d:120ms">
+      <p class="about-bio">
+        Soy un desarrollador de videojuegos con foco en <strong>Unity y C#</strong>.
+        Me apasiona diseñar mecánicas que sean divertidas, claras y equilibradas.
+        Actualmente desarrollo <strong>CivilDeck</strong>, un deck-builder de estrategia medieval donde cada carta
+        representa una decisión que afecta el destino de tu civilización.
+      </p>
+      <ul class="tag-list">
+        <li>Game Design</li>
+        <li>Sistemas de juego</li>
+        <li>Diseño de UI</li>
+        <li>Arte 2D</li>
+        <li>Prototipado rápido</li>
+        <li>Balanceo de mecánicas</li>
+      </ul>
+      <blockquote>
+        <p>"El código es como el humor. Si tenés que explicarlo, es malo."</p>
+        <cite>— Cory House</cite>
+      </blockquote>
+    </div>
+
+    <!-- Skills -->
+    <div class="tab-panel" id="tab-skills">
+      <div class="skills-grid">
+        <div class="skill-card"><span class="skill-icon">🎮</span><div><div class="skill-name">Unity</div><div class="skill-sub">Motor principal de desarrollo</div></div></div>
+        <div class="skill-card"><span class="skill-icon">💻</span><div><div class="skill-name">C#</div><div class="skill-sub">Scripting y lógica de juego</div></div></div>
+        <div class="skill-card"><span class="skill-icon">🃏</span><div><div class="skill-name">Game Design</div><div class="skill-sub">Mecánicas, balanceo y UX</div></div></div>
+        <div class="skill-card"><span class="skill-icon">🎨</span><div><div class="skill-name">Arte 2D / UI</div><div class="skill-sub">Assets e interfaz de juego</div></div></div>
+        <div class="skill-card"><span class="skill-icon">🔧</span><div><div class="skill-name">Git / GitHub</div><div class="skill-sub">Control de versiones</div></div></div>
+        <div class="skill-card"><span class="skill-icon">🌐</span><div><div class="skill-name">HTML / CSS / JS</div><div class="skill-sub">Web frontend</div></div></div>
+        <div class="skill-card"><span class="skill-icon">🖼️</span><div><div class="skill-name">Animación 2D</div><div class="skill-sub">Animator controllers en Unity</div></div></div>
+        <div class="skill-card"><span class="skill-icon">📐</span><div><div class="skill-name">Level Design</div><div class="skill-sub">Diseño de niveles y flujo</div></div></div>
+      </div>
+    </div>
+
+    <!-- Education -->
+    <div class="tab-panel" id="tab-education">
+      <ul class="edu-list">
+        <li class="edu-item">
+          <span class="edu-year">2023 –<br/>hoy</span>
+          <div>
+            <div class="edu-degree">Desarrollo de Videojuegos</div>
+            <div class="edu-school">Universidad / Instituto — Argentina</div>
+            <span class="badge">En curso</span>
+          </div>
+        </li>
+        <li class="edu-item">
+          <span class="edu-year">2024</span>
+          <div>
+            <div class="edu-degree">Unity Game Developer</div>
+            <div class="edu-school">Proyectos independientes & práctica</div>
+          </div>
+        </li>
+      </ul>
+    </div>
   </div>
 </section>
 
 <!-- PROJECTS -->
-<section id="projects">
-  <h2 class="section-title">Mis <span>Proyectos</span></h2>
-  <div class="section-divider"></div>
-  <div class="filter-bar">
-    <button class="filter-btn active" data-lang="all">Todos</button>
-    <button class="filter-btn" data-lang="C#">C#</button>
-    <button class="filter-btn" data-lang="JavaScript">JavaScript</button>
-    <button class="filter-btn" data-lang="HTML">HTML</button>
-  </div>
-  <div id="repos-container">
-    <div class="loading">Cargando repositorios desde GitHub...</div>
+<section id="projects" class="section" style="background: var(--surface-0);">
+  <div class="container">
+    <div class="section-header reveal">
+      <h2>Mis <span>Proyectos</span></h2>
+      <div class="divider"></div>
+    </div>
+    <div class="filter-bar reveal" style="--d:60ms">
+      <button class="filter-btn active" data-lang="all">Todos</button>
+      <button class="filter-btn" data-lang="C#">C#</button>
+      <button class="filter-btn" data-lang="JavaScript">JavaScript</button>
+      <button class="filter-btn" data-lang="HTML">HTML</button>
+    </div>
+    <div id="repos-container">
+      <div class="loading">Cargando repositorios desde GitHub...</div>
+    </div>
   </div>
 </section>
 
 <!-- CONTACT -->
-<section id="contact">
-  <h2 class="section-title">¿Hablamos? <span>Contacto</span></h2>
-  <div class="section-divider"></div>
-  <div class="contact-grid">
-    <a class="contact-card" id="contact-gh" href="https://github.com/santiERP" target="_blank">
-      <span class="ci">🐙</span>
-      <div><div class="contact-label">GitHub</div><div class="contact-value">santiERP</div></div>
-    </a>
-    <!-- Agrega tu email y otras redes aquí -->
-    <a class="contact-card" href="mailto:tu@email.com">
-      <span class="ci">✉️</span>
-      <div><div class="contact-label">Email</div><div class="contact-value">tu@email.com</div></div>
-    </a>
+<section id="contact" class="section">
+  <div class="container">
+    <div class="section-header reveal">
+      <h2>¿Hablamos? <span>Contacto</span></h2>
+      <div class="divider"></div>
+    </div>
+    <div class="contact-grid reveal" style="--d:60ms">
+      <a class="contact-card" id="contact-gh" href="https://github.com/SantiERP" target="_blank" rel="noopener">
+        <span class="ci">🐙</span>
+        <div><div class="contact-label">GitHub</div><div class="contact-value">SantiERP</div></div>
+      </a>
+      <a class="contact-card" href="mailto:tu@email.com">
+        <span class="ci">✉️</span>
+        <div><div class="contact-label">Email</div><div class="contact-value">tu@email.com</div></div>
+      </a>
+    </div>
+
+    <div class="cta-block reveal" style="--d:120ms">
+      <h3>Trabajemos juntos</h3>
+      <p>Estoy abierto a nuevos proyectos, colaboraciones y desafíos creativos.</p>
+      <div class="cta-actions">
+        <a class="btn btn-primary" href="mailto:tu@email.com">✉️ Escribime</a>
+        <a class="btn btn-ghost" id="cta-gh" href="https://github.com/SantiERP" target="_blank" rel="noopener">Ver GitHub</a>
+      </div>
+    </div>
   </div>
 </section>
 
 <footer>
-  Hecho con ❤️ por <a href="https://github.com/santiERP" target="_blank">santiERP</a> · Datos en tiempo real via GitHub API
+  Hecho con ♥ por <a href="https://github.com/SantiERP" target="_blank">Santino Chemez</a> · Datos en tiempo real vía GitHub API
 </footer>
 
 <script>
-  const GH_USER = 'santiERP';
+  const GH_USER = 'SantiERP';
 
-  // Language color map (subset)
   const LANG_COLORS = {
-    'C#': '#178600',
-    'JavaScript': '#f1e05a',
-    'TypeScript': '#3178c6',
-    'HTML': '#e34c26',
-    'CSS': '#563d7c',
-    'Python': '#3572A5',
-    'Java': '#b07219',
-    'C++': '#f34b7d',
-    'Go': '#00ADD8',
-    'Rust': '#dea584',
-    'HLSL': '#aace60',
-    'ShaderLab': '#222c37',
+    'C#': '#178600', 'JavaScript': '#f1e05a', 'TypeScript': '#3178c6',
+    'HTML': '#e34c26', 'CSS': '#563d7c', 'Python': '#3572A5',
+    'Java': '#b07219', 'C++': '#f34b7d', 'Go': '#00ADD8',
+    'Rust': '#dea584', 'HLSL': '#aace60', 'ShaderLab': '#222c37',
   };
 
   let allRepos = [];
 
-  // Fetch profile
+  /* ── GitHub profile ── */
   async function loadProfile() {
     try {
-      const res = await fetch(`https://api.github.com/users/${GH_USER}`);
-      if (!res.ok) throw new Error(res.status);
-      const u = await res.json();
-
+      const u = await fetch(`https://api.github.com/users/${GH_USER}`).then(r => r.json());
       document.getElementById('gh-avatar').src = u.avatar_url;
       if (u.name) document.getElementById('gh-name').textContent = u.name;
-      if (u.bio)  document.getElementById('gh-bio').textContent  = u.bio;
-      document.getElementById('gh-link').href = u.html_url;
-      document.getElementById('contact-gh').href = u.html_url;
-
+      const ghUrl = u.html_url;
+      document.getElementById('gh-link').href = ghUrl;
+      document.getElementById('contact-gh').href = ghUrl;
+      document.getElementById('cta-gh').href = ghUrl;
       document.getElementById('stat-repos').textContent     = u.public_repos;
       document.getElementById('stat-followers').textContent  = u.followers;
-      document.getElementById('stat-following').textContent  = u.following;
-    } catch (e) {
-      console.warn('Profile fetch error:', e);
-    }
+    } catch {}
   }
 
-  // Fetch repos
+  /* ── GitHub repos ── */
   async function loadRepos() {
     const container = document.getElementById('repos-container');
     try {
-      const res = await fetch(
-        `https://api.github.com/users/${GH_USER}/repos?per_page=100&sort=updated`
-      );
-      if (!res.ok) throw new Error(`GitHub API error: ${res.status}`);
+      const res = await fetch(`https://api.github.com/users/${GH_USER}/repos?per_page=100&sort=updated`);
+      if (!res.ok) throw new Error(`${res.status}`);
       allRepos = await res.json();
-
-      // Total stars
       const totalStars = allRepos.reduce((s, r) => s + r.stargazers_count, 0);
       document.getElementById('stat-stars').textContent = totalStars;
-
       renderRepos('all');
-      addFilterListeners();
+      initFilters();
     } catch (e) {
-      container.innerHTML = `<div class="error-msg">No se pudieron cargar los repos: ${e.message}. Verifica que el usuario sea público.</div>`;
+      container.innerHTML = `<div class="error-msg">No se pudieron cargar los repos (${e.message}). Verificá que el usuario sea público.</div>`;
     }
   }
 
   function renderRepos(lang) {
     const container = document.getElementById('repos-container');
-    const filtered = lang === 'all'
-      ? allRepos
-      : allRepos.filter(r => r.language === lang);
-
-    if (filtered.length === 0) {
-      container.innerHTML = '<div class="loading">No hay repositorios en este lenguaje.</div>';
+    const list = lang === 'all' ? allRepos : allRepos.filter(r => r.language === lang);
+    if (!list.length) {
+      container.innerHTML = '<div class="loading">Sin repositorios en este lenguaje.</div>';
       return;
     }
-
-    const html = filtered.map(r => {
+    const html = list.map(r => {
       const color = LANG_COLORS[r.language] || '#8b949e';
-      const desc  = r.description || 'Sin descripción.';
-      const stars = r.stargazers_count;
-      const forks = r.forks_count;
-      return `
-        <a class="repo-card" href="${r.html_url}" target="_blank" rel="noopener">
-          <div class="repo-name">
-            <svg width="14" height="14" viewBox="0 0 16 16" fill="var(--muted)">
-              <path d="M2 2.5A2.5 2.5 0 014.5 0h7A2.5 2.5 0 0114 2.5v11a2.5 2.5 0 01-2.5 2.5h-7A2.5 2.5 0 012 13.5v-11z"/>
-            </svg>
-            ${r.name}
-          </div>
-          <div class="repo-desc">${desc}</div>
-          <div class="repo-meta">
-            ${r.language ? `<span class="repo-lang"><span class="lang-dot" style="background:${color}"></span>${r.language}</span>` : ''}
-            <span>⭐ ${stars}</span>
-            <span>🍴 ${forks}</span>
-          </div>
-        </a>`;
+      return `<a class="repo-card" href="${r.html_url}" target="_blank" rel="noopener">
+        <div class="repo-name">
+          <svg width="13" height="13" viewBox="0 0 16 16" fill="var(--primary-lt)" opacity=".7">
+            <path d="M2 2.5A2.5 2.5 0 014.5 0h7A2.5 2.5 0 0114 2.5v11a2.5 2.5 0 01-2.5 2.5h-7A2.5 2.5 0 012 13.5v-11z"/>
+          </svg>
+          ${r.name}
+        </div>
+        <div class="repo-desc">${r.description || 'Sin descripción.'}</div>
+        <div class="repo-meta">
+          ${r.language ? `<span class="repo-lang"><span class="lang-dot" style="background:${color}"></span>${r.language}</span>` : ''}
+          <span>⭐ ${r.stargazers_count}</span>
+          <span>🍴 ${r.forks_count}</span>
+        </div>
+      </a>`;
     }).join('');
-
     container.innerHTML = `<div class="repos-grid">${html}</div>`;
   }
 
-  function addFilterListeners() {
+  function initFilters() {
     document.querySelectorAll('.filter-btn').forEach(btn => {
       btn.addEventListener('click', () => {
         document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
@@ -492,6 +674,16 @@
       });
     });
   }
+
+  /* ── Tabs ── */
+  document.querySelectorAll('.tab-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById(`tab-${btn.dataset.tab}`).classList.add('active');
+    });
+  });
 
   loadProfile();
   loadRepos();
