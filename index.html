@@ -293,59 +293,39 @@
     }
 
     /* ── PROJECTS ───────────────────────────────────────────────── */
-    .filter-bar { display: flex; gap: .5rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
-    .filter-btn {
-      padding: .3rem .9rem;
-      border: 2px solid var(--border);
-      background: transparent;
-      color: var(--muted);
-      font-family: "Space Mono", monospace; font-size: .7rem;
-      cursor: pointer; transition: all .15s;
-    }
-    .filter-btn:hover, .filter-btn.active {
-      background: var(--accent); color: #0a0a0a;
-      border-color: var(--accent);
-    }
-
-    .repos-grid {
+    .projects-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(280px,1fr));
       gap: .8rem;
     }
-    .repo-card {
+    .project-card {
       background: var(--surface);
       border: 2px solid var(--border);
-      padding: 1.2rem;
-      display: flex; flex-direction: column; gap: .5rem;
-      text-decoration: none; color: inherit;
+      padding: 1.4rem;
+      display: flex; flex-direction: column; gap: .8rem;
       transition: border-color .15s, transform .1s, box-shadow .1s;
     }
-    .repo-card:hover {
+    .project-card:hover {
       border-color: var(--accent);
       transform: translate(-2px,-2px);
       box-shadow: var(--px-shadow);
-      text-decoration: none;
     }
-    .repo-name {
+    .project-header { display: flex; align-items: baseline; justify-content: space-between; gap: .5rem; flex-wrap: wrap; }
+    .project-name {
       font-family: "Space Mono", monospace;
-      font-size: .82rem; font-weight: 700;
+      font-size: .88rem; font-weight: 700;
       color: var(--accent);
-      display: flex; align-items: center; gap: .4rem;
     }
-    .repo-name::before { content: "[ "; color: var(--muted); }
-    .repo-name::after  { content: " ]"; color: var(--muted); }
-    .repo-desc { font-size: .8rem; color: var(--muted); flex: 1; line-height: 1.6; }
-    .repo-meta { display: flex; gap: 1rem; font-size: .7rem; color: var(--muted); margin-top: .4rem; font-family: "Space Mono", monospace; }
-    .repo-lang { display: flex; align-items: center; gap: .3rem; }
-    .lang-dot  { width: 8px; height: 8px; }
-
-    .loading { text-align: center; color: var(--muted); padding: 2rem; font-family: "Space Mono", monospace; font-size: .78rem; }
-    .loading::before { content: "> "; color: var(--accent); }
-    .error-msg {
-      background: rgba(255,107,107,.08); border: 2px solid rgba(255,107,107,.4);
-      padding: 1rem 1.5rem; color: var(--accent2);
-      font-family: "Space Mono", monospace; font-size: .78rem;
+    .project-name::before { content: "[ "; color: var(--muted); }
+    .project-name::after  { content: " ]"; color: var(--muted); }
+    .project-tag {
+      font-family: "Space Mono", monospace;
+      font-size: .6rem; color: var(--muted);
+      border: 1px solid var(--border);
+      padding: .1rem .4rem;
     }
+    .project-desc { font-size: .82rem; color: var(--muted); line-height: 1.65; flex: 1; }
+    .project-links { display: flex; gap: .5rem; flex-wrap: wrap; margin-top: .2rem; }
 
     /* ── CONTACT ────────────────────────────────────────────────── */
     .contact-grid {
@@ -539,11 +519,59 @@
       <div class="section-title">Proyectos</div>
       <div class="section-line"></div>
     </div>
-    <div class="filter-bar">
-      <button class="filter-btn active" data-lang="all">Todos</button>
-      <button class="filter-btn" data-lang="C#">C#</button>
+    <div class="projects-grid">
+
+      <!-- CivilDeck -->
+      <div class="project-card">
+        <div class="project-header">
+          <span class="project-name">CivilDeck</span>
+          <span class="project-tag">Unity · C#</span>
+        </div>
+        <p class="project-desc">Deck-builder de estrategia donde cada carta representa una decisión que moldea el destino de tu civilización medieval.</p>
+        <div class="project-links">
+          <a class="btn btn-primary" href="#" target="_blank" rel="noopener">🎮 Itch.io</a>
+          <a class="btn btn-ghost" href="https://github.com/SantiDev-C/CivilDeck" target="_blank" rel="noopener">GitHub</a>
+        </div>
+      </div>
+
+      <!-- Where is my empire -->
+      <div class="project-card">
+        <div class="project-header">
+          <span class="project-name">Where is my empire</span>
+          <span class="project-tag">Unity · C#</span>
+        </div>
+        <p class="project-desc">Próximamente más información sobre este proyecto.</p>
+        <div class="project-links">
+          <a class="btn btn-primary" href="#" target="_blank" rel="noopener">🎮 Itch.io</a>
+          <a class="btn btn-ghost" href="https://github.com/SantiDev-C/WhereIsMyEmpire" target="_blank" rel="noopener">GitHub</a>
+        </div>
+      </div>
+
+      <!-- Project Apollo -->
+      <div class="project-card">
+        <div class="project-header">
+          <span class="project-name">Project Apollo</span>
+          <span class="project-tag">Unity · C#</span>
+        </div>
+        <p class="project-desc">Próximamente más información sobre este proyecto.</p>
+        <div class="project-links">
+          <a class="btn btn-primary" href="#" target="_blank" rel="noopener">🎮 Itch.io</a>
+        </div>
+      </div>
+
+      <!-- Platform Mirror -->
+      <div class="project-card">
+        <div class="project-header">
+          <span class="project-name">Platform Mirror</span>
+          <span class="project-tag">Unity · C#</span>
+        </div>
+        <p class="project-desc">Próximamente más información sobre este proyecto.</p>
+        <div class="project-links">
+          <a class="btn btn-primary" href="#" target="_blank" rel="noopener">🎮 Itch.io</a>
+        </div>
+      </div>
+
     </div>
-    <div id="repos-container"></div>
   </div>
 </section>
 
@@ -589,8 +617,6 @@
     'Rust': '#dea584', 'HLSL': '#aace60', 'ShaderLab': '#222c37',
   };
 
-  let allRepos = [];
-
   async function loadProfile() {
     try {
       const u = await fetch(`https://api.github.com/users/${GH_USER}`).then(r => {
@@ -604,55 +630,14 @@
         const el = document.getElementById(id);
         if (el) el.href = url;
       });
-      document.getElementById('stat-repos').textContent    = u.public_repos ?? '–';
-      document.getElementById('stat-followers').textContent = u.followers ?? '–';
+      document.getElementById('stat-repos').textContent     = u.public_repos ?? '–';
+      document.getElementById('stat-followers').textContent  = u.followers ?? '–';
+      // Stars via repos
+      const repos = await fetch(`https://api.github.com/users/${GH_USER}/repos?per_page=100`).then(r => r.json());
+      document.getElementById('stat-stars').textContent = repos.reduce((s, r) => s + r.stargazers_count, 0);
     } catch (e) {
       console.warn('Profile error:', e);
     }
-  }
-
-  async function loadRepos() {
-    const container = document.getElementById('repos-container');
-    try {
-      const res = await fetch(`https://api.github.com/users/${GH_USER}/repos?per_page=100&sort=updated`);
-      if (!res.ok) throw new Error(res.status);
-      allRepos = await res.json();
-      const stars = allRepos.reduce((s, r) => s + r.stargazers_count, 0);
-      document.getElementById('stat-stars').textContent = stars;
-      renderRepos('all');
-      initFilters();
-    } catch (e) {
-      container.innerHTML = `<div class="error-msg">ERROR: no se pudieron cargar los repos (${e.message})</div>`;
-    }
-  }
-
-  function renderRepos(lang) {
-    const container = document.getElementById('repos-container');
-    const list = lang === 'all' ? allRepos : allRepos.filter(r => r.language === lang);
-    if (!list.length) {
-      container.innerHTML = '<div class="loading">sin repositorios en este lenguaje</div>';
-      return;
-    }
-    container.innerHTML = `<div class="repos-grid">${list.map(r => `
-      <a class="repo-card" href="${r.html_url}" target="_blank" rel="noopener">
-        <div class="repo-name">${r.name}</div>
-        <div class="repo-desc">${r.description || 'sin descripción.'}</div>
-        <div class="repo-meta">
-          ${r.language ? `<span class="repo-lang"><span class="lang-dot" style="background:${LANG_COLORS[r.language]||'#555'}"></span>${r.language}</span>` : ''}
-          <span>★ ${r.stargazers_count}</span>
-          <span>⑂ ${r.forks_count}</span>
-        </div>
-      </a>`).join('')}</div>`;
-  }
-
-  function initFilters() {
-    document.querySelectorAll('.filter-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        renderRepos(btn.dataset.lang);
-      });
-    });
   }
 
   document.querySelectorAll('.tab-btn').forEach(btn => {
@@ -665,7 +650,6 @@
   });
 
   loadProfile();
-  loadRepos();
 </script>
 </body>
 </html>
