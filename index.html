@@ -143,7 +143,7 @@
     .hero-portrait { position: relative; width: 160px; }
     .avatar {
       width: 160px; height: 160px;
-      image-rendering: pixelated;
+      image-rendering: auto;
       border: 3px solid var(--border);
       outline: 2px solid var(--accent);
       outline-offset: 3px;
@@ -334,6 +334,15 @@
     }
     .project-desc { font-size: .82rem; color: var(--muted); line-height: 1.65; flex: 1; }
     .project-links { display: flex; gap: .5rem; flex-wrap: wrap; margin-top: .2rem; }
+    .project-badges { display: flex; gap: .4rem; flex-wrap: wrap; }
+    .status-badge {
+      font-family: "Space Mono", monospace; font-size: .58rem; font-weight: 700;
+      padding: .15rem .55rem; border: 2px solid;
+    }
+    .badge-dev      { color: #e8c44a; border-color: #e8c44a; background: rgba(232,196,74,.08); }
+    .badge-released { color: #3fb950; border-color: #3fb950; background: rgba(63,185,80,.08); }
+    .badge-proto    { color: #a1a1aa; border-color: #a1a1aa; background: rgba(161,161,170,.08); }
+    .badge-featured { color: #ff9f45; border-color: #ff9f45; background: rgba(255,159,69,.08); }
 
     /* ── CONTACT ────────────────────────────────────────────────── */
     .contact-grid {
@@ -428,16 +437,8 @@
         </div>
         <div class="stat-grid">
           <div class="stat-card">
-            <span class="stat-num" id="stat-repos">–</span>
-            <span class="stat-label">repos</span>
-          </div>
-          <div class="stat-card">
-            <span class="stat-num" id="stat-stars">–</span>
-            <span class="stat-label">stars</span>
-          </div>
-          <div class="stat-card">
-            <span class="stat-num" id="stat-followers">–</span>
-            <span class="stat-label">followers</span>
+            <span class="stat-num">4</span>
+            <span class="stat-label">projects</span>
           </div>
           <div class="stat-card">
             <span class="stat-num">2+</span>
@@ -529,38 +530,6 @@
     </div>
     <div class="projects-grid">
 
-      <!-- CivilDeck -->
-      <div class="project-card">
-        <img class="project-img" src="images/civildeck.png" alt="CivilDeck" />
-        <div class="project-body">
-          <div class="project-header">
-            <span class="project-name">CivilDeck</span>
-            <span class="project-tag">Unity · C#</span>
-          </div>
-          <p class="project-desc">Strategy deck-builder where each card represents a decision that shapes the fate of your medieval civilization.</p>
-          <div class="project-links">
-            <a class="btn btn-primary" href="#" target="_blank" rel="noopener">🎮 Itch.io</a>
-            <a class="btn btn-ghost" href="https://github.com/SantiDev-C/CivilDeck" target="_blank" rel="noopener">GitHub</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Where is my empire -->
-      <div class="project-card">
-        <img class="project-img" src="images/whereismyempire.jpg" alt="Where is my empire" />
-        <div class="project-body">
-          <div class="project-header">
-            <span class="project-name">Where is my empire</span>
-            <span class="project-tag">Unity · C#</span>
-          </div>
-          <p class="project-desc">A tower defense game with a medieval aesthetic. Build a defensive line, manage your resources, and hold back the barbarians.</p>
-          <div class="project-links">
-            <a class="btn btn-primary" href="#" target="_blank" rel="noopener">🎮 Itch.io</a>
-            <a class="btn btn-ghost" href="https://github.com/SantiDev-C/WhereIsMyEmpire" target="_blank" rel="noopener">GitHub</a>
-          </div>
-        </div>
-      </div>
-
       <!-- Project Apollo -->
       <div class="project-card">
         <img class="project-img" src="images/projectapollo.jpeg" alt="Project Apollo" />
@@ -569,9 +538,32 @@
             <span class="project-name">Project Apollo</span>
             <span class="project-tag">Unity · C#</span>
           </div>
+          <div class="project-badges">
+            <span class="status-badge badge-released">Released</span>
+            <span class="status-badge badge-featured">Featured</span>
+          </div>
           <p class="project-desc">A third-person game about piloting a spaceship through space, managing resources to survive until the next planet.</p>
           <div class="project-links">
-            <a class="btn btn-primary" href="#" target="_blank" rel="noopener">🎮 Itch.io</a>
+            <a class="btn btn-primary" href="https://santinoch.itch.io/proyectoapollo" target="_blank" rel="noopener">🎮 Itch.io</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- CivilDeck -->
+      <div class="project-card">
+        <img class="project-img" src="images/civildeck.png" alt="CivilDeck" />
+        <div class="project-body">
+          <div class="project-header">
+            <span class="project-name">CivilDeck</span>
+            <span class="project-tag">Unity · C#</span>
+          </div>
+          <div class="project-badges">
+            <span class="status-badge badge-dev">In Development</span>
+          </div>
+          <p class="project-desc">Strategy deck-builder where each card represents a decision that shapes the fate of your medieval civilization.</p>
+          <div class="project-links">
+            <a class="btn btn-primary" href="https://santinoch.itch.io/civildeck" target="_blank" rel="noopener">🎮 Itch.io</a>
+            <a class="btn btn-ghost" href="https://github.com/SantiDev-C/CivilDeck" target="_blank" rel="noopener">GitHub</a>
           </div>
         </div>
       </div>
@@ -584,9 +576,31 @@
             <span class="project-name">Platform Mirror</span>
             <span class="project-tag">Unity · C#</span>
           </div>
+          <div class="project-badges">
+            <span class="status-badge badge-released">Released</span>
+          </div>
           <p class="project-desc">A 2.5D platformer and puzzle game where you play as a scientist whose failed mirror experiment altered his surroundings, and must now overcome obstacles using the abilities each mirror provides.</p>
           <div class="project-links">
-            <a class="btn btn-primary" href="#" target="_blank" rel="noopener">🎮 Itch.io</a>
+            <a class="btn btn-primary" href="https://santinoch.itch.io/proyect-morgan" target="_blank" rel="noopener">🎮 Itch.io</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Where is my empire -->
+      <div class="project-card">
+        <img class="project-img" src="images/whereismyempire.jpg" alt="Where is my empire" />
+        <div class="project-body">
+          <div class="project-header">
+            <span class="project-name">Where is my empire</span>
+            <span class="project-tag">Unity · C#</span>
+          </div>
+          <div class="project-badges">
+            <span class="status-badge badge-proto">Prototype</span>
+          </div>
+          <p class="project-desc">A tower defense game with a medieval aesthetic. Build a defensive line, manage your resources, and hold back the barbarians.</p>
+          <div class="project-links">
+            <a class="btn btn-primary" href="https://santinoch.itch.io/where-is-my-empire" target="_blank" rel="noopener">🎮 Itch.io</a>
+            <a class="btn btn-ghost" href="https://github.com/SantiDev-C/WhereIsMyEmpire" target="_blank" rel="noopener">GitHub</a>
           </div>
         </div>
       </div>
@@ -607,16 +621,16 @@
         <span class="ci">🐙</span>
         <div><div class="contact-label">GitHub</div><div class="contact-value">SantiDev-C</div></div>
       </a>
-      <a class="contact-card" href="mailto:tu@email.com">
+      <a class="contact-card" href="mailto:santinochemez423@gmail.com">
         <span class="ci">✉️</span>
-        <div><div class="contact-label">Email</div><div class="contact-value">tu@email.com</div></div>
+        <div><div class="contact-label">Email</div><div class="contact-value">santinochemez423@gmail.com</div></div>
       </a>
     </div>
     <div class="cta-block">
       <h3>// Let's work together</h3>
       <p>Open to projects, collaborations and new challenges.</p>
       <div class="cta-actions">
-        <a class="btn btn-primary" href="mailto:tu@email.com">✉️ Contact me</a>
+        <a class="btn btn-primary" href="mailto:santinochemez423@gmail.com">✉️ Contact me</a>
         <a class="btn btn-ghost" id="cta-gh" href="https://github.com/SantiDev-C" target="_blank" rel="noopener">View GitHub</a>
       </div>
     </div>
