@@ -12,6 +12,10 @@ Currently studying at **Escuela DaVinci** and building games with **Unity & C#**
 - 🌐 Check out my portfolio: **[santidev-c.github.io/github-portfolio](https://santidev-c.github.io/github-portfolio)**
 - 📬 Reach me at: **santinochemez423@gmail.com**
 
+### 💡 Interests
+
+I'm always looking to grow not just as a developer, but as a collaborator. I'm particularly interested in improving my **teamwork skills** — learning how to better coordinate with others, share ideas clearly, and contribute effectively within a team. Alongside that, I want to keep developing my **communication skills**, both to express my ideas more clearly and to better understand the people I work with.
+
 ---
 
 ## 🛠️ Tech Stack
