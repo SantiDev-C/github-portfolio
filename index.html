@@ -301,15 +301,23 @@
     .project-card {
       background: var(--surface);
       border: 2px solid var(--border);
-      padding: 1.4rem;
-      display: flex; flex-direction: column; gap: .8rem;
+      display: flex; flex-direction: column;
       transition: border-color .15s, transform .1s, box-shadow .1s;
+      overflow: hidden;
     }
     .project-card:hover {
       border-color: var(--accent);
       transform: translate(-2px,-2px);
       box-shadow: var(--px-shadow);
     }
+    .project-img {
+      width: 100%; height: 170px;
+      object-fit: cover;
+      display: block;
+      image-rendering: auto;
+      border-bottom: 2px solid var(--border);
+    }
+    .project-body { padding: 1.2rem; display: flex; flex-direction: column; gap: .7rem; flex: 1; }
     .project-header { display: flex; align-items: baseline; justify-content: space-between; gap: .5rem; flex-wrap: wrap; }
     .project-name {
       font-family: "Space Mono", monospace;
@@ -523,51 +531,63 @@
 
       <!-- CivilDeck -->
       <div class="project-card">
-        <div class="project-header">
-          <span class="project-name">CivilDeck</span>
-          <span class="project-tag">Unity · C#</span>
-        </div>
-        <p class="project-desc">Deck-builder de estrategia donde cada carta representa una decisión que moldea el destino de tu civilización medieval.</p>
-        <div class="project-links">
-          <a class="btn btn-primary" href="#" target="_blank" rel="noopener">🎮 Itch.io</a>
-          <a class="btn btn-ghost" href="https://github.com/SantiDev-C/CivilDeck" target="_blank" rel="noopener">GitHub</a>
+        <img class="project-img" src="images/civildeck.png" alt="CivilDeck" />
+        <div class="project-body">
+          <div class="project-header">
+            <span class="project-name">CivilDeck</span>
+            <span class="project-tag">Unity · C#</span>
+          </div>
+          <p class="project-desc">Deck-builder de estrategia donde cada carta representa una decisión que moldea el destino de tu civilización medieval.</p>
+          <div class="project-links">
+            <a class="btn btn-primary" href="#" target="_blank" rel="noopener">🎮 Itch.io</a>
+            <a class="btn btn-ghost" href="https://github.com/SantiDev-C/CivilDeck" target="_blank" rel="noopener">GitHub</a>
+          </div>
         </div>
       </div>
 
       <!-- Where is my empire -->
       <div class="project-card">
-        <div class="project-header">
-          <span class="project-name">Where is my empire</span>
-          <span class="project-tag">Unity · C#</span>
-        </div>
-        <p class="project-desc">Próximamente más información sobre este proyecto.</p>
-        <div class="project-links">
-          <a class="btn btn-primary" href="#" target="_blank" rel="noopener">🎮 Itch.io</a>
-          <a class="btn btn-ghost" href="https://github.com/SantiDev-C/WhereIsMyEmpire" target="_blank" rel="noopener">GitHub</a>
+        <img class="project-img" src="images/whereismyempire.jpg" alt="Where is my empire" />
+        <div class="project-body">
+          <div class="project-header">
+            <span class="project-name">Where is my empire</span>
+            <span class="project-tag">Unity · C#</span>
+          </div>
+          <p class="project-desc">Próximamente más información sobre este proyecto.</p>
+          <div class="project-links">
+            <a class="btn btn-primary" href="#" target="_blank" rel="noopener">🎮 Itch.io</a>
+            <a class="btn btn-ghost" href="https://github.com/SantiDev-C/WhereIsMyEmpire" target="_blank" rel="noopener">GitHub</a>
+          </div>
         </div>
       </div>
 
       <!-- Project Apollo -->
       <div class="project-card">
-        <div class="project-header">
-          <span class="project-name">Project Apollo</span>
-          <span class="project-tag">Unity · C#</span>
-        </div>
-        <p class="project-desc">Próximamente más información sobre este proyecto.</p>
-        <div class="project-links">
-          <a class="btn btn-primary" href="#" target="_blank" rel="noopener">🎮 Itch.io</a>
+        <img class="project-img" src="images/projectapollo.jpeg" alt="Project Apollo" />
+        <div class="project-body">
+          <div class="project-header">
+            <span class="project-name">Project Apollo</span>
+            <span class="project-tag">Unity · C#</span>
+          </div>
+          <p class="project-desc">Próximamente más información sobre este proyecto.</p>
+          <div class="project-links">
+            <a class="btn btn-primary" href="#" target="_blank" rel="noopener">🎮 Itch.io</a>
+          </div>
         </div>
       </div>
 
       <!-- Platform Mirror -->
       <div class="project-card">
-        <div class="project-header">
-          <span class="project-name">Platform Mirror</span>
-          <span class="project-tag">Unity · C#</span>
-        </div>
-        <p class="project-desc">Próximamente más información sobre este proyecto.</p>
-        <div class="project-links">
-          <a class="btn btn-primary" href="#" target="_blank" rel="noopener">🎮 Itch.io</a>
+        <img class="project-img" src="images/platformmirror.jpeg" alt="Platform Mirror" />
+        <div class="project-body">
+          <div class="project-header">
+            <span class="project-name">Platform Mirror</span>
+            <span class="project-tag">Unity · C#</span>
+          </div>
+          <p class="project-desc">Próximamente más información sobre este proyecto.</p>
+          <div class="project-links">
+            <a class="btn btn-primary" href="#" target="_blank" rel="noopener">🎮 Itch.io</a>
+          </div>
         </div>
       </div>
 
