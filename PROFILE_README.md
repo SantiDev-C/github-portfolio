@@ -37,18 +37,18 @@ Currently studying at **Escuela DaVinci** and building games with **Unity & C#**
 
 ---
 
+## 🔗 Connect with me
+
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/santinochemez/)
+[![Itch.io](https://img.shields.io/badge/Itch.io-FA5C5C?style=for-the-badge&logo=itchdotio&logoColor=white)](https://santinoch.itch.io/)
+[![Portfolio](https://img.shields.io/badge/Portfolio-e8c44a?style=for-the-badge&logo=githubpages&logoColor=black)](https://santidev-c.github.io/github-portfolio)
+
+---
+
 ## 📊 GitHub Stats
 
 <p align="center">
   <img src="https://github-readme-stats.vercel.app/api?username=SantiDev-C&show_icons=true&theme=tokyonight&hide_border=true&count_private=true" alt="GitHub Stats" />
   <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=SantiDev-C&layout=compact&theme=tokyonight&hide_border=true" alt="Top Languages" />
 </p>
-
----
-
-## 🔗 Connect with me
-
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/santinochemez/)
-[![Itch.io](https://img.shields.io/badge/Itch.io-FA5C5C?style=for-the-badge&logo=itchdotio&logoColor=white)](https://santinoch.itch.io/)
-[![Portfolio](https://img.shields.io/badge/Portfolio-e8c44a?style=for-the-badge&logo=githubpages&logoColor=black)](https://santidev-c.github.io/github-portfolio)
 
