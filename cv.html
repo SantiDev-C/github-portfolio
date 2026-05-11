@@ -33,6 +33,21 @@
       gap: 1rem;
     }
 
+    .cv-header-left {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .cv-avatar {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid #1a1a1a;
+      flex-shrink: 0;
+    }
+
     .cv-header-left h1 {
       font-family: 'Space Mono', monospace;
       font-size: 22pt;
@@ -199,8 +214,11 @@
   <!-- HEADER -->
   <header class="cv-header">
     <div class="cv-header-left">
-      <h1>Santino Chemez</h1>
-      <div class="role">Game Developer</div>
+      <img class="cv-avatar" src="https://github.com/SantiDev-C.png" alt="Santino Chemez" />
+      <div>
+        <h1>Santino Chemez</h1>
+        <div class="role">Game Developer</div>
+      </div>
     </div>
     <div class="cv-header-right">
       <div>Buenos Aires, Argentina</div>
