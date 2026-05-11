@@ -6,42 +6,44 @@
   <title>Santino Chemez — CV</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
   <style>
+    @page { size: A4; margin: 1.4cm 1.6cm; }
+
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
       font-family: 'Inter', sans-serif;
-      font-size: 10pt;
+      font-size: 9pt;
       color: #1a1a1a;
       background: #fff;
-      line-height: 1.5;
+      line-height: 1.45;
     }
 
     .page {
       max-width: 760px;
       margin: 0 auto;
-      padding: 48px 52px;
+      padding: 36px 44px;
     }
 
     /* ── HEADER ── */
     .cv-header {
       display: flex;
       justify-content: space-between;
-      align-items: flex-start;
+      align-items: center;
       border-bottom: 2px solid #1a1a1a;
-      padding-bottom: 18px;
-      margin-bottom: 24px;
+      padding-bottom: 12px;
+      margin-bottom: 14px;
       gap: 1rem;
     }
 
     .cv-header-left {
       display: flex;
       align-items: center;
-      gap: 16px;
+      gap: 13px;
     }
 
     .cv-avatar {
-      width: 72px;
-      height: 72px;
+      width: 58px;
+      height: 58px;
       border-radius: 0;
       object-fit: cover;
       border: 2px solid #1a1a1a;
@@ -50,24 +52,24 @@
 
     .cv-header-left h1 {
       font-family: 'Space Mono', monospace;
-      font-size: 22pt;
+      font-size: 18pt;
       font-weight: 700;
       letter-spacing: -0.5px;
       color: #1a1a1a;
     }
 
     .cv-header-left .role {
-      font-size: 10pt;
+      font-size: 9pt;
       color: #555;
-      margin-top: 3px;
+      margin-top: 2px;
       font-weight: 500;
     }
 
     .cv-header-right {
       text-align: right;
-      font-size: 8.5pt;
+      font-size: 8pt;
       color: #444;
-      line-height: 1.8;
+      line-height: 1.7;
     }
 
     .cv-header-right a {
@@ -76,73 +78,70 @@
     }
 
     /* ── SECTIONS ── */
-    .section {
-      margin-bottom: 22px;
-    }
+    .section { margin-bottom: 13px; }
 
     .section-title {
       font-family: 'Space Mono', monospace;
-      font-size: 7.5pt;
+      font-size: 6.5pt;
       font-weight: 700;
       letter-spacing: .12em;
       text-transform: uppercase;
       color: #1a1a1a;
       border-bottom: 1px solid #ddd;
-      padding-bottom: 4px;
-      margin-bottom: 12px;
+      padding-bottom: 3px;
+      margin-bottom: 8px;
     }
 
     /* ── ABOUT ── */
-    .about-text {
-      font-size: 9.5pt;
-      color: #333;
-      line-height: 1.7;
-    }
+    .about-text { font-size: 8.5pt; color: #333; line-height: 1.6; }
 
     /* ── SKILLS ── */
     .skills-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 6px 24px;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 4px 8px;
     }
 
     .skill-row {
       display: flex;
       align-items: center;
-      gap: 8px;
-      font-size: 9pt;
+      gap: 6px;
+      font-size: 8.5pt;
     }
 
     .skill-dot {
-      width: 5px;
-      height: 5px;
+      width: 4px;
+      height: 4px;
       background: #1a1a1a;
       flex-shrink: 0;
     }
 
     /* ── PROJECTS ── */
-    .project {
-      margin-bottom: 14px;
+    .projects-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px 20px;
+    }
+
+    .project-name {
+      font-family: 'Space Mono', monospace;
+      font-size: 8.5pt;
+      font-weight: 700;
+      color: #1a1a1a;
     }
 
     .project-header {
       display: flex;
       justify-content: space-between;
       align-items: baseline;
-      gap: 1rem;
-    }
-
-    .project-name {
-      font-family: 'Space Mono', monospace;
-      font-size: 9.5pt;
-      font-weight: 700;
-      color: #1a1a1a;
+      gap: .5rem;
+      margin-bottom: 2px;
     }
 
     .project-badge {
-      font-size: 7.5pt;
+      font-size: 6.5pt;
       font-weight: 600;
-      padding: 1px 7px;
+      padding: 1px 5px;
       border: 1px solid;
       white-space: nowrap;
     }
@@ -153,17 +152,16 @@
     .badge-featured  { color: #c05621; border-color: #c05621; }
 
     .project-desc {
-      font-size: 9pt;
+      font-size: 8pt;
       color: #444;
-      margin-top: 3px;
-      line-height: 1.6;
+      line-height: 1.5;
     }
 
     .project-link {
-      font-size: 8pt;
+      font-size: 7.5pt;
       color: #1a56a0;
       text-decoration: underline;
-      margin-top: 2px;
+      margin-top: 1px;
       display: inline-block;
     }
 
@@ -175,35 +173,16 @@
       gap: 1rem;
     }
 
-    .edu-title {
-      font-size: 9.5pt;
-      font-weight: 600;
-      color: #1a1a1a;
-    }
-
-    .edu-school {
-      font-size: 9pt;
-      color: #555;
-      margin-top: 2px;
-    }
-
-    .edu-date {
-      font-size: 8.5pt;
-      color: #777;
-      white-space: nowrap;
-    }
+    .edu-title { font-size: 8.5pt; font-weight: 600; color: #1a1a1a; }
+    .edu-school { font-size: 8pt; color: #555; margin-top: 1px; }
+    .edu-date { font-size: 8pt; color: #777; white-space: nowrap; }
 
     /* ── INTERESTS ── */
-    .interests-text {
-      font-size: 9.5pt;
-      color: #333;
-      line-height: 1.7;
-    }
+    .interests-text { font-size: 8.5pt; color: #333; line-height: 1.6; }
 
     /* ── PRINT ── */
     @media print {
-      body { font-size: 10pt; }
-      .page { padding: 32px 40px; }
+      .page { padding: 0; }
       a { color: #1a56a0 !important; text-decoration: underline !important; }
     }
   </style>
@@ -242,12 +221,12 @@
     <div class="section-title">Skills</div>
     <div class="skills-grid">
       <div class="skill-row"><span class="skill-dot"></span> Unity</div>
-      <div class="skill-row"><span class="skill-dot"></span> Trello</div>
       <div class="skill-row"><span class="skill-dot"></span> C#</div>
-      <div class="skill-row"><span class="skill-dot"></span> Notion</div>
       <div class="skill-row"><span class="skill-dot"></span> Git &amp; GitHub</div>
-      <div class="skill-row"><span class="skill-dot"></span> ClickUp</div>
       <div class="skill-row"><span class="skill-dot"></span> Pixel Art</div>
+      <div class="skill-row"><span class="skill-dot"></span> Trello</div>
+      <div class="skill-row"><span class="skill-dot"></span> Notion</div>
+      <div class="skill-row"><span class="skill-dot"></span> ClickUp</div>
       <div class="skill-row"><span class="skill-dot"></span> Game Design</div>
     </div>
   </section>
@@ -255,41 +234,44 @@
   <!-- PROJECTS -->
   <section class="section">
     <div class="section-title">Projects</div>
+    <div class="projects-grid">
 
-    <div class="project">
-      <div class="project-header">
-        <span class="project-name">Project Apollo</span>
-        <span class="project-badge badge-featured">Released · Featured</span>
+      <div>
+        <div class="project-header">
+          <span class="project-name">Project Apollo</span>
+          <span class="project-badge badge-featured">Released · Featured</span>
+        </div>
+        <p class="project-desc">Third-person spaceship survival game. Featured on itch.io.</p>
+        <a class="project-link" href="https://santinoch.itch.io/proyectoapollo">santinoch.itch.io/proyectoapollo</a>
       </div>
-      <p class="project-desc">Third-person spaceship survival game. Featured on itch.io.</p>
-      <a class="project-link" href="https://santinoch.itch.io/proyectoapollo">santinoch.itch.io/proyectoapollo</a>
-    </div>
 
-    <div class="project">
-      <div class="project-header">
-        <span class="project-name">CivilDeck</span>
-        <span class="project-badge badge-dev">In Development</span>
+      <div>
+        <div class="project-header">
+          <span class="project-name">CivilDeck</span>
+          <span class="project-badge badge-dev">In Development</span>
+        </div>
+        <p class="project-desc">Strategy deck-builder set in medieval civilizations.</p>
+        <a class="project-link" href="https://santinoch.itch.io/civildeck">santinoch.itch.io/civildeck</a>
       </div>
-      <p class="project-desc">Strategy deck-builder set in medieval civilizations. Core mechanics and card systems implemented.</p>
-      <a class="project-link" href="https://santinoch.itch.io/civildeck">santinoch.itch.io/civildeck</a>
-    </div>
 
-    <div class="project">
-      <div class="project-header">
-        <span class="project-name">Platform Mirror</span>
-        <span class="project-badge badge-released">Released</span>
+      <div>
+        <div class="project-header">
+          <span class="project-name">Platform Mirror</span>
+          <span class="project-badge badge-released">Released</span>
+        </div>
+        <p class="project-desc">2.5D puzzle platformer built around mirror mechanics.</p>
+        <a class="project-link" href="https://santinoch.itch.io/proyect-morgan">santinoch.itch.io/proyect-morgan</a>
       </div>
-      <p class="project-desc">2.5D puzzle platformer built around mirror mechanics and level design challenges.</p>
-      <a class="project-link" href="https://santinoch.itch.io/proyect-morgan">santinoch.itch.io/proyect-morgan</a>
-    </div>
 
-    <div class="project">
-      <div class="project-header">
-        <span class="project-name">Where Is My Empire</span>
-        <span class="project-badge badge-proto">Prototype</span>
+      <div>
+        <div class="project-header">
+          <span class="project-name">Where Is My Empire</span>
+          <span class="project-badge badge-proto">Prototype</span>
+        </div>
+        <p class="project-desc">Medieval tower defense prototype with placement mechanics.</p>
+        <a class="project-link" href="https://santinoch.itch.io/where-is-my-empire">santinoch.itch.io/where-is-my-empire</a>
       </div>
-      <p class="project-desc">Medieval tower defense game prototype with strategic placement mechanics.</p>
-      <a class="project-link" href="https://santinoch.itch.io/where-is-my-empire">santinoch.itch.io/where-is-my-empire</a>
+
     </div>
   </section>
 
