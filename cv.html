@@ -180,14 +180,31 @@
     /* ── INTERESTS ── */
     .interests-text { font-size: 8.5pt; color: #333; line-height: 1.6; }
 
+    /* ── DOWNLOAD BTN ── */
+    #download-btn {
+      display: block;
+      margin: 16px auto;
+      padding: 8px 22px;
+      background: #1a1a1a;
+      color: #fff;
+      font-family: 'Space Mono', monospace;
+      font-size: 8pt;
+      border: none;
+      cursor: pointer;
+      letter-spacing: .05em;
+    }
+    #download-btn:hover { background: #333; }
+
     /* ── PRINT ── */
     @media print {
       .page { padding: 0; }
+      #download-btn { display: none; }
       a { color: #1a56a0 !important; text-decoration: underline !important; }
     }
   </style>
 </head>
 <body>
+<button id="download-btn" onclick="downloadPDF()">⬇ Descargar PDF</button>
 <div class="page">
 
   <!-- HEADER -->
@@ -327,5 +344,48 @@
   </section>
 
 </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+<script>
+async function downloadPDF() {
+  const btn = document.getElementById('download-btn');
+  btn.textContent = 'Generando...';
+  btn.disabled = true;
+
+  const el = document.querySelector('.page');
+  const pageWidth = 595.28;
+  const elRect = el.getBoundingClientRect();
+  const scale = pageWidth / elRect.width;
+
+  const links = [...el.querySelectorAll('a[href]')].map(a => {
+    const r = a.getBoundingClientRect();
+    return {
+      url: a.href,
+      x: (r.left - elRect.left) * scale,
+      y: (r.top - elRect.top) * scale,
+      w: r.width * scale,
+      h: r.height * scale
+    };
+  });
+
+  const opt = {
+    margin: 0,
+    filename: 'Santino_Chemez_CV.pdf',
+    image: { type: 'jpeg', quality: 0.98 },
+    html2canvas: { scale: 2, useCORS: true, logging: false },
+    jsPDF: { unit: 'pt', format: 'a4', orientation: 'portrait' }
+  };
+
+  const pdf = await html2pdf().set(opt).from(el).toPdf().get('pdf');
+
+  links.forEach(({ url, x, y, w, h }) => {
+    pdf.link(x, y, w, h, { url });
+  });
+
+  pdf.save('Santino_Chemez_CV.pdf');
+
+  btn.textContent = 'Descargar PDF';
+  btn.disabled = false;
+}
+</script>
 </body>
 </html>
