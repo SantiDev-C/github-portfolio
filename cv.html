@@ -200,14 +200,14 @@
   </style>
 </head>
 <body>
-<button id="download-btn" onclick="downloadPDF()">⬇ Download PDF</button>
+<button id="download-btn" onclick="downloadPDF()">⬇ Descargar PDF</button>
 <div class="page">
 
   <!-- HEADER -->
   <header class="cv-header">
     <div class="cv-header-left">
       <h1>Santino Chemez</h1>
-      <div class="role">Game Developer</div>
+      <div class="role">Desarrollador de Videojuegos</div>
     </div>
     <div class="cv-header-right">
       <div>Buenos Aires, Argentina</div>
@@ -217,17 +217,17 @@
 
   <!-- EDUCATION -->
   <section class="section">
-    <div class="section-title">Education</div>
+    <div class="section-title">Educación</div>
     <div class="edu-row" style="margin-bottom:8px;">
       <div>
-        <div class="edu-title">Technical Degree in Video Game Design and Programming</div>
+        <div class="edu-title">Tecnicatura en Diseño y Programación de Videojuegos</div>
         <div class="edu-school">Escuela DaVinci</div>
       </div>
-      <div class="edu-date">2022 – Present</div>
+      <div class="edu-date">2022 – Presente</div>
     </div>
     <div class="edu-row">
       <div>
-        <div class="edu-title">Teaching Assistant — Game Design and Production</div>
+        <div class="edu-title">Ayudante de Cátedra — Diseño y Producción de Juegos</div>
         <div class="edu-school">Escuela DaVinci</div>
       </div>
     </div>
@@ -235,42 +235,42 @@
 
   <!-- EXPERIENCE -->
   <section class="section">
-    <div class="section-title">Experience</div>
+    <div class="section-title">Experiencia</div>
     <div style="display:flex; flex-direction:column; gap:10px;">
 
       <div>
         <div class="project-header">
           <span class="project-name">Project Apollo</span>
-          <span class="project-badge badge-featured">Released · Featured</span>
+          <span class="project-badge badge-featured">Publicado · Destacado</span>
         </div>
-        <p class="project-desc">Third-person space survival game. Featured on itch.io.</p>
+        <p class="project-desc">Juego de supervivencia espacial en tercera persona. Destacado en itch.io.</p>
         <a class="project-link" href="https://santinoch.itch.io/proyectoapollo">santinoch.itch.io/proyectoapollo</a>
       </div>
 
       <div>
         <div class="project-header">
           <span class="project-name">CivilDeck</span>
-          <span class="project-badge badge-dev">In Development</span>
+          <span class="project-badge badge-dev">En Desarrollo</span>
         </div>
-        <p class="project-desc">Strategy deck-builder set in medieval civilizations.</p>
+        <p class="project-desc">Deck-builder de estrategia ambientado en civilizaciones medievales.</p>
         <a class="project-link" href="https://santinoch.itch.io/civildeck">santinoch.itch.io/civildeck</a>
       </div>
 
       <div>
         <div class="project-header">
           <span class="project-name">Platform Mirror</span>
-          <span class="project-badge badge-released">Released</span>
+          <span class="project-badge badge-released">Publicado</span>
         </div>
-        <p class="project-desc">2.5D puzzle platformer built around mirror mechanics.</p>
+        <p class="project-desc">Plataformero puzzle 2.5D basado en mecánicas de espejo.</p>
         <a class="project-link" href="https://santinoch.itch.io/proyect-morgan">santinoch.itch.io/proyect-morgan</a>
       </div>
 
       <div>
         <div class="project-header">
           <span class="project-name">Where Is My Empire</span>
-          <span class="project-badge badge-proto">Prototype</span>
+          <span class="project-badge badge-proto">Prototipo</span>
         </div>
-        <p class="project-desc">Medieval tower defense prototype with strategic placement mechanics.</p>
+        <p class="project-desc">Prototipo de tower defense medieval con mecánicas de posicionamiento estratégico.</p>
         <a class="project-link" href="https://santinoch.itch.io/where-is-my-empire">santinoch.itch.io/where-is-my-empire</a>
       </div>
 
@@ -279,9 +279,9 @@
 
   <!-- SKILLS -->
   <section class="section">
-    <div class="section-title">Skills &amp; Tools</div>
+    <div class="section-title">Habilidades y Herramientas</div>
 
-    <div class="subsection-title">Technical</div>
+    <div class="subsection-title">Técnicas</div>
     <div class="skills-grid" style="grid-template-columns: repeat(3, 1fr);">
       <div class="skill-row"><span class="skill-dot"></span> Unity</div>
       <div class="skill-row"><span class="skill-dot"></span> C#</div>
@@ -290,11 +290,11 @@
       <div class="skill-row"><span class="skill-dot"></span> Maya</div>
     </div>
 
-    <div class="subsection-title">Soft Skills</div>
+    <div class="subsection-title">Habilidades Blandas</div>
     <div class="skills-grid" style="grid-template-columns: repeat(3, 1fr);">
-      <div class="skill-row"><span class="skill-dot"></span> Self-taught</div>
-      <div class="skill-row"><span class="skill-dot"></span> Communication</div>
-      <div class="skill-row"><span class="skill-dot"></span> Adaptability</div>
+      <div class="skill-row"><span class="skill-dot"></span> Autodidacta</div>
+      <div class="skill-row"><span class="skill-dot"></span> Comunicación</div>
+      <div class="skill-row"><span class="skill-dot"></span> Adaptabilidad</div>
     </div>
   </section>
 
@@ -303,7 +303,7 @@
 <script>
 async function downloadPDF() {
   const btn = document.getElementById('download-btn');
-  btn.textContent = 'Generating...';
+  btn.textContent = 'Generando...';
   btn.disabled = true;
 
   const el = document.querySelector('.page');
@@ -338,7 +338,7 @@ async function downloadPDF() {
 
   pdf.save('Santino_Chemez_CV.pdf');
 
-  btn.textContent = 'Download PDF';
+  btn.textContent = 'Descargar PDF';
   btn.disabled = false;
 }
 </script>
